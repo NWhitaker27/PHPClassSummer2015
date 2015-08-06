@@ -15,7 +15,7 @@
                 <?php for($td = 0; $td <= 30; $td++):?>
                 <td style="background-color: <?php $randColor = '#'.strtoupper(dechex(rand(0x000000, 0xFFFAAA)));echo $randColor;?>">
                     <?php echo $randColor; ?>
-                    <span style ="color:#FFF"> <?php echo $randColor?></span>
+                    <span style ="color:#FFF"> <?php echo $randColor;?></span>
                 </td>
                 <?php endfor; ?>
             </tr>
