@@ -1,9 +1,4 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
         <meta charset="UTF-8">
@@ -11,7 +6,32 @@ and open the template in the editor.
     </head>
     <body>
         <?php
-        // put your code here
+            
+        include_once './corps.php';
+        
+        $id = filter_input(INPUT_GET, 'id');
+        
+        $db = Corps();
+           
+        $stmt = $db->prepare("DELETE FROM corps where id = :id");
+           
+        $binds = array(
+             ":id" => $id
+        );
+           
+        $isDeleted = false;
+        if ($stmt->execute($binds) && $stmt->rowCount() > 0) {
+            $isDeleted = true;
+        }         
+        
         ?>
+        
+        <h1> Record <?php echo $id; ?>  
+            <?php if ( !$isDeleted ): ?>Not<?php endif; ?> 
+            Deleted
+        </h1>
+        
+        <a href="<?php echo filter_input(INPUT_SERVER, 'HTTP_REFERER'); ?>"> Go back </a>
+         
     </body>
 </html>

@@ -32,9 +32,9 @@
             <?php foreach ($results as $row): ?>
                 <tr>
                     <td><?php echo $row['corp']; ?></td>
-                    <td><a href="delete.php?id=<?php echo $row['id']; ?>">Delete</a></td>
-                    <td><a href="update.php?id=<?php echo $row['id']; ?>">Update</a></td>
                     <td><a href="update.php?id=<?php echo $row['id']; ?>">Read</a></td>
+                    <td><a href="delete.php?id=<?php echo $row['id']; ?>">Delete</a></td>
+                    <td><a href="update.php?id=<?php echo $row['id']; ?>">Update</a></td>                    
                 </tr>
             <?php endforeach; ?>
             </tbody>
