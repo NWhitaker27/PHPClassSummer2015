@@ -40,7 +40,7 @@
 
         <h1><?php echo $results; ?></h1>
 
-        <h1>Add datetime with data</h1>
+        <h1>Create New Company</h1>
         <form method="post" action="#">            
            Company Name: <input type="text" name="corp" value="<?php echo $corp ?>" />
             <br />
