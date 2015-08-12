@@ -15,8 +15,8 @@
         else {
             echo 'submitted from Form 2';
             }
-            include './forms/form1.php';
-            include './forms/form2.php';
+            include './includes/form1.php';
+            include './includes/form2.php';
         ?>
     </body>
 </html>
