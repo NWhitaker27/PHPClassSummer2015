@@ -3,14 +3,19 @@
     <head>
         <meta charset="UTF-8">
         <title></title>
+        <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
     </head>
     <body>
         <?php
         
-        include_once './corps.php';
+        include_once './DBCorps.php';
         include_once './functions.php';
         
-        $db = Corps();
+        $db = DBCorps();
         
         $corp = '';
         $incorp_dt = '';
@@ -21,21 +26,20 @@
         
         if ( isPostRequest() ) {
             
-            $id = filter_input(INPUT_POST, 'id');
-            $corp = filter_input(INPUT_POST, 'corp');
-            $incorp_dt = filter_input(INPUT_POST, 'incorp_dt');
-            $email = filter_input(INPUT_POST, 'email');
-            $zipcode = filter_input(INPUT_POST, 'zipcode');
-            $owner = filter_input(INPUT_POST, 'owner');
-            $phone = filter_input(INPUT_POST, 'phone');
+            $id = filter_input(INPUT_POST, 'i-d');
+            $corp = filter_input(INPUT_POST, 'co-rp');
+            $incorp_dt = filter_input(INPUT_POST, 'in-corp_dt');
+            $email = filter_input(INPUT_POST, 'e-mail');
+            $zipcode = filter_input(INPUT_POST, 'zip-code');
+            $owner = filter_input(INPUT_POST, 'ow-ner');
+            $phone = filter_input(INPUT_POST, 'p-hone');
             
                                    
-            $stmt = $db->prepare("UPDATE corps SET corp = :corp, incorp_dt = :incorp_dt,email = :email, zipcode = :zipcode, owner = :owner, phone = :phone WHERE id = :id");
+            $stmt = $db->prepare("UPDATE corps SET corp = :corp, incorp_dt = CURDATE(), email = :email, zipcode = :zipcode, owner = :owner, phone = :phone WHERE id = :id");
             
             $binds = array(
                 ":id" => $id,
-                ":corp" => $corp,
-                ":incorp_dt" => $incorp_dt,
+                ":corp" => $corp,                
                 ":email" => $email,
                 ":zipcode" => $zipcode,
                 ":owner" => $owner,
@@ -61,8 +65,7 @@
          $result = array();
          if ($stmt->execute($binds) && $stmt->rowCount() > 0) {
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
-            $corp =  $result['corp'];
-            $incorp_dt =  $result['incorp_dt'];
+            $corp =  $result['corp'];            
             $email =  $result['email'];
             $zipcode =  $result['zipcode'];
             $owner =  $result['owner'];
@@ -80,18 +83,16 @@
             <?php if ( isset($message) ) { echo $message; } ?>
         </p>
         
-        <form method="post" action="#">            
-            Data one: <input type="text" name="corp" value="<?php echo $corp ?>" />
+        <form class="form-group" method="post" action="#">            
+            Company Name: <input type="text" name="co-rp" value="<?php echo $corp ?>" />
             <br />
-            Data two: <input type="text" name="incorp_dt" value="<?php echo $incorp_dt ?>" />
+            Email: <input type="text" name="e-mail" value="<?php echo $email ?>" />
             <br />
-            Data two: <input type="text" name="email" value="<?php echo $email ?>" />
+            Zipcode: <input type="text" name="zip-code" value="<?php echo $zipcode ?>" />
             <br />
-            Data two: <input type="text" name="zipcode" value="<?php echo $zipcode ?>" />
+            Owner: <input type="text" name="ow-ner" value="<?php echo $owner ?>" />
             <br />
-            Data two: <input type="text" name="owner" value="<?php echo $owner ?>" />
-            <br />
-            Data two: <input type="text" name="phone" value="<?php echo $phone ?>" />
+            Phone: <input type="text" name="p-hone" value="<?php echo $phone ?>" />
             <br />
             <input type="hidden" name="i-d" value="<?php echo $id ?>" />
             <input type="submit" value="Submit" />

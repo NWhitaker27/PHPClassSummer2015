@@ -2,15 +2,20 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title></title>        
+        <title></title>   
+        <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
     </head>
     <body>
         <?php
         
-           include_once './Corps.php';
+           include_once './DBCorps.php';
            include './functions.php';
             
-           $db = Corps();
+           $db = DBCorps();
            
            $stmt = $db->prepare("SELECT * FROM corps");
            
@@ -21,8 +26,8 @@
             
         ?>
         
-        
-        <table border="0">
+        <a class="btn btn-primary btn-lg btn-block" href="create.php?id=<?php echo $row['id']; ?>">Add New Company</a> 
+        <table border="0" class="table table-striped">
             <thead>
                 <tr>
                     <h2>Company Name</h2>
@@ -31,14 +36,15 @@
             <tbody>
             <?php foreach ($results as $row): ?>
                 <tr>
-                    <td><?php echo $row['corp']; ?></td>
-                    <td><a href="read.php?id=<?php echo $row['id']; ?>">Read</a></td>
-                    <td><a href="delete.php?id=<?php echo $row['id']; ?>">Delete</a></td>
-                    <td><a href="update.php?id=<?php echo $row['id']; ?>">Update</a></td>                    
+                    <td><?php echo $row['corp']; ?></td>                   
+                    <td><a class="btn btn-primary" href="read.php?id=<?php echo $row['id']; ?>">Read</a></td>
+                    <td><a class="btn btn-warning" href="update.php?id=<?php echo $row['id']; ?>">Update</a></td>
+                    <td><a class="btn btn-danger" href="delete.php?id=<?php echo $row['id']; ?>">Delete</a></td>
+                                        
                 </tr>
             <?php endforeach; ?>
             </tbody>
         </table>
-           
+          
     </body>
 </html>

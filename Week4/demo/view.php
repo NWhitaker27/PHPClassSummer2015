@@ -7,8 +7,8 @@
     <body>
         <?php
         
-           include_once './dbconnect.php';
-           include_once './dbData.php';
+           include_once './functions/dbconnect.php';
+           include_once './functions/dbData.php';
             
            $results = getAllTestData()
             
@@ -21,8 +21,7 @@
                     <th>ID</th>
                     <th>Data One</th>
                     <th>Data Two</th>
-                    <th></th>
-                    <th></th>
+                    
                 </tr>
             </thead>
             <tbody>

@@ -4,7 +4,7 @@
  * 
  * @return PDO Object
  */  
-function Corps() {
+function DBCorps() {
     $config = array(
         'DB_DNS' => 'mysql:host=localhost;port=3306;dbname=PHPClassSummer2015',
         'DB_USER' => 'php',

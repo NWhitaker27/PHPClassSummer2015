@@ -21,7 +21,7 @@ function dbconnect() {
          * connection by setting the variable to null */
         $db = null;
         $message = $ex->getMessage();
-        include './includes/erro/php';
+        include './includes/error/php';
         exit();
     }
 

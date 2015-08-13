@@ -3,15 +3,20 @@
     <head>
         <meta charset="UTF-8">
         <title></title>
+        <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
     </head>
     <body>
         <?php
             
-        include_once './corps.php';
+        include_once './DBCorps.php';
         
         $id = filter_input(INPUT_GET, 'id');
         
-        $db = Corps();
+        $db = DBCorps();
            
         $stmt = $db->prepare("DELETE FROM corps where id = :id");
            
