@@ -3,11 +3,16 @@
     <head>
         <meta charset="UTF-8">
         <title></title>
+        <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
     </head>
     <body>
         <?php
-        include './DBCorps.php';
-        include './functions.php';
+        include_once './functions/DBCorps.php';
+        include './functions/functions.php';
         $results = '';
         if (isPostRequest()) {
             $db = DBCorps();
@@ -38,22 +43,32 @@
 
         <h1><?php echo $results; ?></h1>
 
-        <h1>Create New Company</h1>
-        <form method="post" action="#">            
-           Company Name: <input type="text" name="corp" value="" />
-            <br />
-            Email: <input type="text" name="email" value="" />
-            <br />
-            Zipcode: <input type="text" name="zipcode" value="" />
-            <br />
-            Owner: <input type="text" name="owner" value="" />
-            <br />
-            Phone Number: <input type="text" name="phone" value="" />
-            <br />
-           
-            <input type="submit" value="Submit" />
+        <h1 class="text-center">Create New Company</h1>
+        <form class="form-inline" method="post" action="#">
+            <div class="text-center" class="form-group">
+                <label class="sr-only" for="corp">Company Name</label>
+                <input type="text" class="form-control" name="corp" id="corp" placeholder="Company Name">
+            </div><br>
+            <div class="text-center" class="form-group">
+                <label class="sr-only" for="email">Email</label>
+                <input type="text" class="form-control" name="email" id="email" placeholder="Email Address">
+            </div><br>
+            <div class="text-center" class="form-group">
+                <label class="sr-only" for="zip">Zipcode</label>
+                <input type="text" class="form-control" name="zipcode" id="zip" placeholder="Zipcode">
+            </div><br>
+            <div class="text-center" class="form-group">
+                <label class="sr-only" for="owner">Owner</label>
+                <input type="text" class="form-control" name="owner" id="owner" placeholder="Company Owner">
+            </div><br>
+            <div class="text-center" class="form-group">
+                <label class="sr-only" for="Phone">Phone</label>
+                <input type="text" class="form-control" name="phone" id="phone" placeholder="Phone Number">
+            </div><br>
+                      
+            <p class="text-center"><input class="btn btn-primary btn-lg" type="submit" value="Submit" /></p>
         </form>
         
-        <p><a href="view.php">View Data</a></p>
+        <p class="text-center"><a href="view.php">View Data</a></p>
     </body>
 </html>

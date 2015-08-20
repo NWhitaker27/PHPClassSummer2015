@@ -2,13 +2,18 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title></title>        
+        <title></title>
+        <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
     </head>
     <body>
         <?php
         
-           include_once './DBCorps.php';
-           include './functions.php';
+           include_once './functions/DBCorps.php';
+           include './functions/functions.php';
             
            $db = DBCorps();
            
@@ -34,13 +39,12 @@
             <tbody>
             <?php foreach ($results as $row): ?>
                 <tr>
-                   
                    <td><?php echo $row['corp']; ?></td> 
                    <td><?php echo $row['incorp_dt']; ?></td> 
                    <td><?php echo $row['email']; ?></td> 
                    <td><?php echo $row['zipcode']; ?></td> 
                    <td><?php echo $row['owner']; ?></td>
-                   <td><?php echo $row['phone']; ?></td> 
+                   <td><?php echo $row['phone']; ?></td>
                 </tr>
             <?php endforeach; ?>
             </tbody>

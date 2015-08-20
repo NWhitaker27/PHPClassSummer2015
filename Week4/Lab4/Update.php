@@ -3,12 +3,17 @@
     <head>
         <meta charset="UTF-8">
         <title></title>
+        <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
     </head>
     <body>
         <?php
         
-        include_once './DBCorps.php';
-        include_once './functions.php';
+        include_once './functions/DBCorps.php';
+        include './functions/functions.php';
         
         $db = DBCorps();
         
@@ -34,8 +39,7 @@
             
             $binds = array(
                 ":id" => $id,
-                ":corp" => $corp,
-                
+                ":corp" => $corp,                
                 ":email" => $email,
                 ":zipcode" => $zipcode,
                 ":owner" => $owner,
@@ -79,7 +83,7 @@
             <?php if ( isset($message) ) { echo $message; } ?>
         </p>
         
-        <form method="post" action="#">            
+        <form class="form-group" method="post" action="#">            
             Company Name: <input type="text" name="co-rp" value="<?php echo $corp ?>" />
             <br />
             Email: <input type="text" name="e-mail" value="<?php echo $email ?>" />
