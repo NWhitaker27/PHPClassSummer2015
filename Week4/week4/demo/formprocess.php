@@ -10,7 +10,7 @@
         
         $action = filter_input(INPUT_POST, 'action');
         
-        if ( $action === 'Submit1' ) {
+        if ( $action === 'search' ) {
             echo 'submited form 1';
         }
         if ( $action === 'Submit2' ) {

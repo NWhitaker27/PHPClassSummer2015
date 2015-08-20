@@ -12,8 +12,8 @@
                       
            $db = dbconnect();
            $column = 'dataone';
-           $order = 'desc'; //DESC
-           $stmt = $db->prepare("SELECT * FROM test ORDER BY $column $order");
+           $order = 'ASC'; //DESC
+           $stmt = $db->prepare("SELECT * FROM corps ORDER BY $column $order");
 
              $results = array();
              if ($stmt->execute() && $stmt->rowCount() > 0) {
