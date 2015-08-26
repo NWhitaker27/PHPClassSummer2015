@@ -6,6 +6,7 @@
     </head>
     <body>
         <?php
+        //by running this first, it aligns the login info, and allows "Sessionview" to run
         // put your code here
         
             session_start();
