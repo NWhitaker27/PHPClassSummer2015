@@ -10,7 +10,6 @@ function dbconnect() {
         'DB_USER' => 'root',
         'DB_PASSWORD' => ''
     );
-
     try {
         /* Create a Database connection and 
          * save it into the variable */
@@ -24,9 +23,5 @@ function dbconnect() {
         include './includes/error.php';
         exit();
     }
-
     return $db;
 }
-
-
-
