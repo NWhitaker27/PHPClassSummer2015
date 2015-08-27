@@ -65,7 +65,7 @@
                
         <form method="post" action="#">
             
-            Category:
+            Choose Category:
             <select name="category_id">
             <?php foreach ($categories as $row): ?>
                 <option value="<?php echo $row['category_id']; ?>">
@@ -82,7 +82,7 @@
             <br />
             <input type="submit" value="Submit" />
         </form>
-        
+        <a href="view.php"> Go back </a>
         
         
     </body>
