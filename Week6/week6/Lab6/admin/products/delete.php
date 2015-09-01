@@ -12,16 +12,19 @@
     <body>
         <?php
             
-        include_once './dbconnect.php';
+        include_once '../../functions/dbconnect.php';
+        include_once '../../functions/category-functions.php';
+        include_once '../../functions/products-functions.php';
+        include_once '../../functions/until.php';
         
-        $category_id = filter_input(INPUT_GET, 'category_id');
+        $product_id = filter_input(INPUT_GET, 'product_id');
         
         $db = dbconnect();
            
-        $stmt = $db->prepare("DELETE FROM products WHERE category_id = :category_id");
+        $stmt = $db->prepare("DELETE FROM products WHERE product_id = :product_id");
            
         $binds = array(
-             ":category_id" => $category_id
+             ":product_id" => $product_id
         );
            
         $isDeleted = false;
@@ -31,7 +34,7 @@
         
         ?>
         
-        <h1> Record <?php echo $id; ?>  
+        <h1> Record <?php echo $product_id; ?>  
             <?php if ( !$isDeleted ): ?>Not<?php endif; ?> 
             Deleted
         </h1>

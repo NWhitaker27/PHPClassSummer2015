@@ -36,18 +36,18 @@
         <table border="0">
             <thead>
                 <tr>
-                    <h2>Products</h2>
+                    <h2 class="text-center">Products</h2>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="text-center">
             <?php foreach ($results as $row): ?>
-                <tr>
-                   <td><?php echo $row['category']; ?></td>  
-                   <td><?php echo $row['product']; ?></td> 
-                   <td><?php echo $row['price']; ?></td> 
-                   <td><?php echo $row['image']; ?></td>                  
+                <ul class="list-inline">
+                   <li><?php echo $row['category']; ?></li>
+                   <li><?php echo $row['product' ]; ?></li>        
+                   <li><?php echo $row['price' ]; ?></li> 
+                   <li><?php echo $row['image' ]; ?></li>                  
                                    
-                </tr>
+                </ul>
             <?php endforeach; ?>
             </tbody>
         </table>

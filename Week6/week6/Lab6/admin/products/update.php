@@ -18,15 +18,16 @@
         
         $db = dbconnect();
         
-        
-        $product = '';
-        $price = '';
-        $image = '';
+        $product_id = "";
+        $product_name = "";
+        $price = "";
+        $image = "";
         
         if ( isPostRequest() ) {
             
-            $category_id = filter_input(INPUT_POST, 'cat-id');
-            $product = filter_input(INPUT_POST, 'pro-duct');
+            //$category_id = filter_input(INPUT_POST, 'cat-id');
+            $product_id = filter_input(INPUT_POST, 'prod-id');
+            $product_name = filter_input(INPUT_POST, 'prod-name');
             $price = filter_input(INPUT_POST, 'pri-ce');
             $image = filter_input(INPUT_POST, 'ima-ge');
                         
@@ -35,7 +36,7 @@
             
             $binds = array(
                 ":product_id" => $product_id,
-                ":product" => $product,
+                ":product" => $product_name,
                 ":price" => $price,
                 ":image" => $image,
             );
@@ -47,7 +48,7 @@
             
             
         } else {
-            $id = filter_input(INPUT_GET, 'product_id');
+            $product_id = filter_input(INPUT_GET, 'id');
         }
         
         $stmt = $db->prepare("SELECT * FROM products where product_id = :product_id");
@@ -59,10 +60,10 @@
          $result = array();
          if ($stmt->execute($binds) && $stmt->rowCount() > 0) {
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
-            $category_id = $category_id['category_id'];
-            $product = $product['product'];
-            $price = $price['price'];
-            $image = $image['image'];
+            //$category_id = $category_id['category_id'];
+            $product_name = $result['product'];
+            //$price = $price['price'];
+            //$image = $image['image'];
          } else {
              header('Location: view.php');
              die('ID not found');
@@ -77,13 +78,13 @@
         </p>
         
         <form class="form-group" method="post" action="#">            
-            Product Name: <input type="text" name="pro-duct" value="<?php echo $product ?>" />
+            Product Name: <input type="text" name="prod-name" value="<?php echo $product_name ?>" />
             <br />
             Price: <input type="text" name="pri-ce" value="<?php echo $price ?>" />
             <br />
-            Image: <input type="text" name="image" value="<?php echo $image ?>" />
+            Image: <input type="text" name="ima-ge" value="<?php echo $image ?>" />
             <br />
-            <input type="hidden" name="cat-id" value="<?php echo $category_id ?>" />
+            <input type="hidden" name="prod-id" value="<?php echo $product_id ?>" />
             <input type="submit" value="Submit" />
         </form>
         

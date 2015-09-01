@@ -12,7 +12,10 @@
     <body>
         <?php
             
-        include_once './dbconnect.php';
+        include_once '../../functions/dbconnect.php';
+        include_once '../../functions/category-functions.php';
+        include_once '../../functions/products-functions.php';
+        include_once '../../functions/until.php';
         
         $category_id = filter_input(INPUT_GET, 'category_id');
         
