@@ -45,9 +45,9 @@
             
             if ( count($errors) == 0 ) {
                 
-            if ( empty ( $image )) {
-                $errors[] = 'image could not be uploaded';
-            }    
+                if ( empty ( $image )) {
+                    $errors[] = 'image could not be uploaded';
+                }    
                 
                 if ( createProduct($category_id, $product, $price, $image ) ) {
                     $results = 'Product Added';
