@@ -11,13 +11,16 @@
     </head>
     <body>
         <?php
-            
+        require_once '../../includes/session-start.req-inc.php';
+        require_once '../../includes/access-required.html.php';
+        
+        
         include_once '../../functions/dbconnect.php';
         include_once '../../functions/category-functions.php';
         include_once '../../functions/products-functions.php';
         include_once '../../functions/until.php';
         
-        $product_id = filter_input(INPUT_GET, 'product_id');
+        $product_id = filter_input(INPUT_GET, 'id');
         
         $db = dbconnect();
            

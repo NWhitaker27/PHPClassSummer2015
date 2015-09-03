@@ -1,8 +1,5 @@
-
-
 <!DOCTYPE html>
 <html>
-    
     <head>
         <meta charset="UTF-8">
         <title></title>
@@ -11,15 +8,14 @@
         <?php
         // put your code here
         require_once '../../includes/session-start.req-inc.php';
-        require_once '../../includes/access-required.html.php';
-        
-        require_once '../../includes/session-start.req-inc.php';
+         require_once '../../includes/access-required.html.php';
+         
+         
         include_once '../../functions/dbconnect.php';
         include_once '../../functions/category-functions.php';
         include_once '../../functions/until.php';
         
-        
-        
+       
         
         if ( isPostRequest() ) {
             
@@ -51,7 +47,7 @@
             Category Name : <input type="text" name="category" value="" />
             <input type="submit" value="Submit" />
         </form>
-        <a href="view.php"> Go back </a>
+        
         
     </body>
 </html>

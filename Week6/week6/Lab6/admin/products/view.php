@@ -11,6 +11,8 @@
     </head>
     <body>
         <?php
+        require_once '../../includes/session-start.req-inc.php';
+        require_once '../../includes/access-required.html.php';
         
         include_once '../../functions/dbconnect.php';
         include_once '../../functions/category-functions.php';
@@ -47,7 +49,7 @@
             <?php endforeach; ?>
             </tbody>
         </table>
-          
+          <p><a class="btn btn-primary btn-lg btn-block" href="../../index.php">Start Over</a></p>
     </body>
 </html>
 

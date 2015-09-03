@@ -7,23 +7,29 @@
  * price
  * image
  */
+
+
 function createProduct($category_id, $product, $price, $image ) {
     
     $db = dbconnect();
     $stmt = $db->prepare("INSERT INTO products SET category_id = :category_id, product = :product, price = :price, image = :image ");
+
     $binds = array(
         ":category_id" => $category_id,
         ":product" => $product,
         ":price" => $price,
         ":image" => $image
     );
+
     if ($stmt->execute($binds) && $stmt->rowCount() > 0) {
         return true;
     }
      
-    return false;  
+    return false;
+    
     
 }
+
 
 function getAllProducts() {
     $db = dbconnect();
@@ -36,6 +42,8 @@ function getAllProducts() {
     return $results;
     
 }
+
+
 
 function getProduct($id) {
     $db = dbconnect();
@@ -53,6 +61,8 @@ function getProduct($id) {
     
 }
 
+
+
 function isValidProduct($value) {
     if ( empty($value) ) {
         return false;
@@ -66,9 +76,10 @@ function isValidPrice($value) {
     return true;
 }
 
+
 function uploadProductImage() {
     
-    $imageName = "";
+    $imageName = false;
     
     try {
 
@@ -126,7 +137,7 @@ function uploadProductImage() {
         /* File is uploaded successfully. */
         $imageName = $fileName . '.' . $ext;
         
-    } catch (RuntimeException $ext) {
+    } catch (RuntimeException $e) {
 
         /* There was an error */
         

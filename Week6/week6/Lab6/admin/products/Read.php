@@ -11,6 +11,9 @@
     </head>
     <body>
         <?php
+        require_once '../../includes/session-start.req-inc.php';
+        require_once '../../includes/access-required.html.php';
+        
         
         include_once '../../functions/dbconnect.php';
         include_once '../../functions/category-functions.php';
@@ -45,7 +48,11 @@
                    <li><?php echo $row['category']; ?></li>
                    <li><?php echo $row['product' ]; ?></li>        
                    <li><?php echo $row['price' ]; ?></li> 
-                   <li><?php echo $row['image' ]; ?></li>                  
+                   <li><?php if ( empty($row['image']) ) : ?>
+                    No Image
+                <?php else: ?>
+                    <img src="../../images/<?php echo $row['image']; ?>" width="100" height="100" />
+                <?php endif; ?> </li>                  
                                    
                 </ul>
             <?php endforeach; ?>

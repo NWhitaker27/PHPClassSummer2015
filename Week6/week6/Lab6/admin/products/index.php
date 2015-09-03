@@ -10,6 +10,6 @@
         include_once '../../includes/access-required.html.php';
         ?>
         
-        <p><a href="create.php">Create</a></p>
+        <p><a href="../products/view.php">Create</a></p>
     </body>
 </html>

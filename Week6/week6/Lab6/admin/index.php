@@ -6,7 +6,7 @@
     </head>
     <body>
         <?php
-        
+            require_once '../includes/session-start.req-inc.php';
             include_once '../functions/dbconnect.php';
             include_once '../functions/login-function.php';
             include_once '../functions/until.php';

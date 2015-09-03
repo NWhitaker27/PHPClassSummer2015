@@ -11,9 +11,12 @@
     </head>
     <body>
         <?php
+        require_once '../../includes/session-start.req-inc.php';
+        require_once '../../includes/access-required.html.php';
         
         include_once '../../functions/dbconnect.php';
         include_once '../../functions/category-functions.php';
+        include_once '../../functions/products-functions.php';
         include_once '../../functions/until.php';
         
         $db = dbconnect();
@@ -29,7 +32,7 @@
             $product_id = filter_input(INPUT_POST, 'prod-id');
             $product_name = filter_input(INPUT_POST, 'prod-name');
             $price = filter_input(INPUT_POST, 'pri-ce');
-            $image = filter_input(INPUT_POST, 'ima-ge');
+            $image = uploadProductImage();
                         
                                    
             $stmt = $db->prepare("UPDATE products SET  product = :product, price = :price, image = :image WHERE product_id = :product_id");
@@ -77,12 +80,12 @@
             <?php if ( isset($message) ) { echo $message; } ?>
         </p>
         
-        <form class="form-group" method="post" action="#">            
+        <form class="form-group" method="post" action="#" enctype="multipart/form-data">            
             Product Name: <input type="text" name="prod-name" value="<?php echo $product_name ?>" />
             <br />
             Price: <input type="text" name="pri-ce" value="<?php echo $price ?>" />
             <br />
-            Image: <input type="text" name="ima-ge" value="<?php echo $image ?>" />
+            Image:  <input  name="upfile" type="file" />
             <br />
             <input type="hidden" name="prod-id" value="<?php echo $product_id ?>" />
             <input type="submit" value="Submit" />
