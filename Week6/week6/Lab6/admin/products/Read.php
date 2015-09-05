@@ -51,7 +51,7 @@
                    <li><?php if ( empty($row['image']) ) : ?>
                     No Image
                 <?php else: ?>
-                    <img src="../../images/<?php echo $row['image']; ?>" width="100" height="100" />
+                    <img src="../../images/<?php echo $row['image']; ?>" width="125" height="100" />
                 <?php endif; ?> </li>                  
                                    
                 </ul>

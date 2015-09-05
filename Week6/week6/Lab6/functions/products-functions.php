@@ -53,6 +53,22 @@ function getProduct($id) {
     
 }
 
+function getProductByCat($id) {
+    $db = dbconnect();
+    $stmt = $db->prepare("SELECT * FROM products JOIN categories ON categories.category_id = products.category_id WHERE products.category_id=:category_id");
+     $binds = array(
+        ":category_id" => $id
+    );
+    
+    $results = array();
+    if ($stmt->execute($binds) && $stmt->rowCount() > 0) {
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+     
+    return $results;
+    
+}
+
 function isValidProduct($value) {
     if ( empty($value) ) {
         return false;

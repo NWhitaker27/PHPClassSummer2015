@@ -18,7 +18,14 @@
             $allCategories = getAllCategories();            
             $allProducts = getAllProducts();
             
-            $categorySelected = filter_input(INPUT_GET, 'category_id');
+            $categorySelected = filter_input(INPUT_GET, 'cat');
+                if ($categorySelected != "")
+                    {
+                    $allProducts = getProductByCat($categorySelected);
+                    
+                    }
+                    
+                    
             $action = filter_input(INPUT_POST, 'action');
                        
             
@@ -27,7 +34,14 @@
                 addToCart($productID);
                 
             }
-                  
+            if (isset($_POST['action']) and $_POST['action'] == 'Empty cart')
+                {
+                 // Empty the $_SESSION['cart'] array
+                unset($_SESSION['cart']);
+                header('Location: ?cart');
+                exit();
+                } 
+                
            
             include_once '../includes/categories.html.php';
             include_once '../includes/products.html.php';
@@ -35,6 +49,9 @@
             
             
         ?>
+        
+        <p><a class="btn btn-primary btn-lg btn-block" href="./checkout.php">Check Out</a></p>
         <p><a class="btn btn-primary btn-lg btn-block" href="../index.php">Start Over</a></p>
+        
     </body>
 </html>

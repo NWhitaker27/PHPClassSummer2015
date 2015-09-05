@@ -10,7 +10,7 @@
                 <?php if ( empty($row['image']) ) : ?>
                     No Image
                 <?php else: ?>
-                    <img src="../images/<?php echo $row['image']; ?>" width="100" height="100" />
+                    <img src="../images/<?php echo $row['image']; ?>" width="150" height="100" />
                 <?php endif; ?>
             </td>
             <td><?php echo $row['product']; ?></td>

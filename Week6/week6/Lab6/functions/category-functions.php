@@ -26,6 +26,7 @@ function getAllCategories() {
     return $results;
     
 }
+
 function isValidCategory($value) {
     if ( empty($value) ) {
         return false;
@@ -37,3 +38,4 @@ function isValidCategory($value) {
     
     return true;
 }
+

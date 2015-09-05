@@ -33,7 +33,10 @@
             $product_name = filter_input(INPUT_POST, 'prod-name');
             $price = filter_input(INPUT_POST, 'pri-ce');
             $image = uploadProductImage();
-                        
+             if ( empty ( $image )) {
+                    $image = filter_input(INPUT_POST, 'image');
+                }
+                
                                    
             $stmt = $db->prepare("UPDATE products SET  product = :product, price = :price, image = :image WHERE product_id = :product_id");
             
@@ -65,8 +68,8 @@
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
             //$category_id = $category_id['category_id'];
             $product_name = $result['product'];
-            //$price = $price['price'];
-            //$image = $image['image'];
+            $price = $result['price'];
+            $image = $result['image'];
          } else {
              header('Location: view.php');
              die('ID not found');
@@ -81,13 +84,15 @@
         </p>
         
         <form class="form-group" method="post" action="#" enctype="multipart/form-data">            
-            Product Name: <input type="text" name="prod-name" value="<?php echo $product_name ?>" />
+            Product Name: <input type="text" name="prod-name" value="<?php echo $product_name; ?>" />
             <br />
-            Price: <input type="text" name="pri-ce" value="<?php echo $price ?>" />
+            Price: <input type="text" name="pri-ce" value="<?php echo $price; ?>" />
             <br />
-            Image:  <input  name="upfile" type="file" />
+            Image:  <input  name="upfile" type="file" /> 
+            <img src="../../images/<?php echo $image; ?>" width="125" height="100" />
             <br />
-            <input type="hidden" name="prod-id" value="<?php echo $product_id ?>" />
+            <input type="hidden" name="prod-id" value="<?php echo $product_id; ?>" />
+            <input type="hidden" name="image" value="<?php echo $image; ?>" />
             <input type="submit" value="Submit" />
         </form>
         

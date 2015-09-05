@@ -13,7 +13,7 @@ and open the template in the editor.
         
         <h1>Welcome to The Zoo!</h1>
         
-        <a href="site/">Enter Site</a> | <a href="admin/">Admin Login</a>
+        <a href="site/">Click Here for the Awesome!</a> | <a href="admin/">Admin Login</a>
         
     </body>
 </html>
