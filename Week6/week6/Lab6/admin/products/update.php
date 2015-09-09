@@ -86,7 +86,7 @@
         <form class="form-group" method="post" action="#" enctype="multipart/form-data">            
             Product Name: <input type="text" name="prod-name" value="<?php echo $product_name; ?>" />
             <br />
-            Price: <input type="text" name="pri-ce" value="<?php echo $price; ?>" />
+            Price: <input type="text" name="pri-ce" value=" $<?php echo $price; ?>" />
             <br />
             Image:  <input  name="upfile" type="file" /> 
             <img src="../../images/<?php echo $image; ?>" width="125" height="100" />

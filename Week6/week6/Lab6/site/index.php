@@ -34,11 +34,11 @@
                 addToCart($productID);
                 
             }
-            if (isset($_POST['action']) and $_POST['action'] == 'Empty cart')
+            if ( $action === 'Empty cart' )
                 {
-                 // Empty the $_SESSION['cart'] array
+                //Empty the $_SESSION['cart'] array                
                 unset($_SESSION['cart']);
-                header('Location: ?cart');
+                emptyCart('Location: ?cart');
                 exit();
                 } 
                 

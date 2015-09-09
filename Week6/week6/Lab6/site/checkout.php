@@ -15,7 +15,7 @@
                         
             startCart(); 
                 
-            $total = 0;
+            $total = 0;;
             
             $checkoutProducts = array();
             
@@ -28,11 +28,13 @@
           
             include '../includes/checkout.html.php';
             
-        ?>   
-        <form action ="Empty"type ="button" method ="post">
+        ?> 
         <p><a class="btn btn-primary btn-lg btn-block" href="./index.php">Continue Shopping</a></p>
-        <p><a class="btn btn-primary btn-lg btn-block" name = "Empty" value=" <?php echo emptyCart; ?>">Empty Cart</a></p>
-        <p><a class="btn btn-primary btn-lg btn-block" href="../index.php">Start Over</a></p>
+        
+        <form action ="#" method ="post">        
+        <p><input type="submit" name="action" value="Empty cart"></p>        
         </form>
+        
+        <p><a class="btn btn-primary btn-lg btn-block" href="../index.php">Start Over</a></p>
     </body>
 </html>

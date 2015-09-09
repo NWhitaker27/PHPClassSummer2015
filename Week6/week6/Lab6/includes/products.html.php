@@ -14,7 +14,7 @@
                 <?php endif; ?>
             </td>
             <td><?php echo $row['product']; ?></td>
-            <td><?php echo $row['price']; ?></td>
+            <td>$<?php echo $row['price']; ?></td>
             <td>
                 <form method="post" action="#">
                     <input type="submit" value="Buy" />

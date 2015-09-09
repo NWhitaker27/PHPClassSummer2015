@@ -47,7 +47,7 @@
                 <ul class="list-inline">
                    <li><?php echo $row['category']; ?></li>
                    <li><?php echo $row['product' ]; ?></li>        
-                   <li><?php echo $row['price' ]; ?></li> 
+                   <li>$<?php echo $row['price' ]; ?></li> 
                    <li><?php if ( empty($row['image']) ) : ?>
                     No Image
                 <?php else: ?>

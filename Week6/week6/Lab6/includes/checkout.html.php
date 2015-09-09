@@ -5,13 +5,14 @@
     <?php foreach ($checkoutProducts as $row): ?>
         <tr>            
             <td><?php echo $row['product']; ?></td>
-            <td><?php echo $row['price']; ?></td>
+            <td>$<?php echo number_format($row['price'],2); ?></td>
+            <td><?php $total += $row['price']; ?></td>
         </tr>    
     <?php endforeach; ?>   
 
          <tr>            
             <td>Total</td>
-            <td><?php echo $total; ?></td>
+            <td>$<?php echo number_format($total, 2); ?></td>
         </tr>  
 </table>
  <?php else: ?>       
