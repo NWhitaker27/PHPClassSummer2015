@@ -11,12 +11,9 @@
     </head>
     <body>
         <?php
-        require_once '../../includes/session-start.req-inc.php';
-        require_once '../../includes/access-required.html.php';
-        
-        include_once '../../functions/dbconnect.php';
-        include_once '../../functions/category-functions.php';
-        include_once '../../functions/products-functions.php';
+        require_once '../../includes/session-start.req-inc';
+        require_once '../../includes/access-required.html.php';        
+        include_once '../../functions/dbconnect.php';        
         include_once '../../functions/until.php';
             
            $db = dbconnect();
@@ -30,11 +27,11 @@
             
         ?>
         
-        <a class="btn btn-primary btn-lg btn-block" href="create.php?id=<?php echo $row['product_id']; ?>">Add New Product</a> 
+        <a class="btn btn-primary btn-lg btn-block" href="create.php?id=<?php echo $row['address']; ?>">Add New Address</a> 
         <table border="0" class="table table-striped">
             <thead>
                 <tr>
-                    <h2>Product Name</h2>
+                    <h2>Name:</h2>
                 </tr>
             </thead>
             <tbody>

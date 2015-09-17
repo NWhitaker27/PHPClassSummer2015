@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<meta charset="UTF-8">
+<html>
+    <head>
+
+        <meta charset="UTF-8">
         <title></title>
     </head>
     <body>
         <?php
-            require_once '../includes/session-start.req-inc.php';
+            require_once '../includes/session-start.req-inc';
             include_once '../functions/dbconnect.php';
             include_once '../functions/login-function.php';
             include_once '../functions/until.php';
