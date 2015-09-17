@@ -1,9 +1,9 @@
 <?php
 
-function getAllTestData(){
-    $db = dbconnect();
+function getAllTestData($columnsOrder, $orderBy){
+    $db = getDatabase();
            
-    $stmt = $db->prepare("SELECT * FROM corps");
+    $stmt = $db->prepare("SELECT * FROM corps GROUP BY $columnsOrder ORDER BY $orderBy");
 
      $results = array();
      if ($stmt->execute() && $stmt->rowCount() > 0) {
@@ -12,11 +12,9 @@ function getAllTestData(){
     return $results;
 }
 
-/*
- * $stmt = $db->prepare("SELECT * FROM test ORDER BY $column $order");
- */
+
 function searchTest($column, $search){
-    $db = dbconnect();
+    $db = getDatabase();
            
     $stmt = $db->prepare("SELECT * FROM corps WHERE $column LIKE :search");
 

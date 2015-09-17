@@ -4,9 +4,9 @@
  * 
  * @return PDO Object
  */  
-function dbconnect() {
+function getDatabase() {
     $config = array(
-        'DB_DNS' => 'mysql:host=localhost;port=3306;dbname=PHPClassSummer2015',
+        'DB_DNS' => 'mysql:host=localhost;port=3306;dbname=phpclasssummer2015',
         'DB_USER' => 'root',
         'DB_PASSWORD' => ''
     );
@@ -21,7 +21,7 @@ function dbconnect() {
          * connection by setting the variable to null */
         $db = null;
         $message = $ex->getMessage();
-        include './includes/error.php';
+        include './Companies/error.php';
         exit();
     }
 
