@@ -7,8 +7,7 @@
         
         <label>Search By</label> </br> 
         <select name="searchColumn">
-            <?php 
-                //populates selection with preset array of items and grabs user input for use in repopulating fields
+            <?php
                 $columnHeaders = fillColumnArray();
                 $columnSelection = filter_input(INPUT_GET, 'searchColumn');
                 $searchSelection = filter_input(INPUT_GET, 'searchBy');
