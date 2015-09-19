@@ -1,12 +1,31 @@
-<form method="GET" action="#">
-    <h3>OR</h3>
-    <select name="searchby">
-        <option value="corp">Corp</option>
-        <option value="owner">Owner</option>
-        <option value="zipcode">Zip code</option>
-    </select>
-    <input type="radio" name="order" value="ASC">ASC
-    <input type="radio" name="order" value="DESC">DESC
-    <input type="hidden" name="search" value="selectData"/>
-    <input type="submit" value="Search"/>
+<div class="form-group">
+    <center>
+<form action="#" method="get">
+    <fieldset>
+        <legend><u>Sort Data</u></legend>
+        
+        <label>Sort Order</label><br>
+        Ascending<input type="radio" name="sortOrder" value="ASC" />
+        Descending<input type="radio" name="sortOrder" value="DESC" />
+
+        <br><br>
+        <label>Sort By</label> </br> 
+        <select name="sortBy">
+            <?php
+                $columnHeaders = fillColumnArray();
+                $sortSelection = filter_input(INPUT_GET, 'sortBy');
+                for ($i=0; $i < 7; $i++){ ?>
+            <option value="<?php echo $columnHeaders[0][$i];?>"<?php if ($sortSelection == $columnHeaders[0][$i]) 
+                {
+                    echo "selected";
+                }
+                ?>><?php echo $columnHeaders[1][$i];?></option>
+            <?php } ?>            
+        </select>
+        <input type="hidden" name="action" value="sort" /></br>
+        <input type="submit" class="btn btn-sm btn-primary"  value="Submit" />
+        <a class="btn btn-sm btn-primary" href="index.php?id=<?php echo $row['id']; ?>">Reset</a>
+    </fieldset>    
 </form>
+    </center>
+</div>
