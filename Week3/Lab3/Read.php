@@ -36,6 +36,18 @@
                     <h2>Company Name</h2>
                 </tr>
             </thead>
+            
+            <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Company Name</th>
+                    <th>Incorporation Date</th>
+                    <th>Email</th>
+                    <th>Zip Code</th>
+                    <th>Owner</th>
+                    <th>Phone</th>
+                </tr>
+            </thead>
             <tbody>
             <?php foreach ($results as $row): ?>
                 <tr>

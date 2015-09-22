@@ -83,22 +83,27 @@
             <?php if ( isset($message) ) { echo $message; } ?>
         </p>
         
-        <form class="form-group" method="post" action="#">            
-            Company Name: <input type="text" name="co-rp" value="<?php echo $corp ?>" />
-            <br />
-            Email: <input type="text" name="e-mail" value="<?php echo $email ?>" />
-            <br />
-            Zipcode: <input type="text" name="zip-code" value="<?php echo $zipcode ?>" />
-            <br />
-            Owner: <input type="text" name="ow-ner" value="<?php echo $owner ?>" />
-            <br />
-            Phone: <input type="text" name="p-hone" value="<?php echo $phone ?>" />
-            <br />
-            <input type="hidden" name="i-d" value="<?php echo $id ?>" />
-            <input type="submit" value="Submit" />
+        
+        <h1 class="text-center"><u>Update Company Information</u></h1>
+        <form class="form-inline" method="post" action="#">
+        <div class="text-center" class="form-group">
+            Company Name: </br><input type="text" name="co-rp" value="<?php echo $corp ?>" />
+            </br>
+            Email: </br><input type="text" name="e-mail" value="<?php echo $email ?>" />
+            </br>
+            Zipcode: </br><input type="text" name="zip-code" value="<?php echo $zipcode ?>" />
+            </br>
+            Owner: </br><input type="text" name="ow-ner" value="<?php echo $owner ?>" />
+            </br>
+            Phone: </br><input type="text" name="p-hone" value="<?php echo $phone ?>" />
+            </br>
+            <input type="hidden" name="i-d" value="<?php echo $id ?>" />            
+        </div></br>                      
+            <p class="text-center"><input class="btn btn-primary btn-lg" type="submit" value="Submit" /></p>
         </form>
-        
-        <a href="view.php"> Go back </a>
-        
+    <center>
+        <a href="view.php" > Go back </a>
+    </center> 
     </body>
 </html>
+    
