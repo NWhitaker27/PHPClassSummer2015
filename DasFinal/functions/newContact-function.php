@@ -11,18 +11,20 @@
  * birthday
  * image
  */
-function createContact($address_id, $user_id, $address_group_id, $name, $email, $address, $phone, $web, $bday, $image)
+function createContact($newData)
     {
     $db = dbconnect();
-    $stmt = $db->prepare("INSERT INTO address SET address_id = :address_id, fullname = :fullname, email = :email, phone = :phone, website = :website, birthday = :birthday, image = :image ");
+    $stmt = $db->prepare("INSERT INTO address SET user_id = :user_id, address_group_id = :address_group_id, fullname = :fullname, phone = :phone, website = :website, birthday = :birthday, image = :image ");
     $binds = array(
-        ":address_id" => $address_id,
-        ":fullname" => $name,
-        ":email" => $email,
-        ":phone" => $phone,
-        ":website" => $web,
-        ":birthday" => $bday,
-        ":image" => $image
+        ":user_id" => $newData[0],
+        ":address_group_id" => $newData[1],
+        ":fullname" => $newData[2],
+        ":email" => $newData[3],
+        ":address" => $newData[4],
+        ":phone" => $newData[5],
+        ":website" => $newData[6],
+        ":birthday" => $newData[7],
+        ":image" => $newData[8]
     );
     if ($stmt->execute($binds) && $stmt->rowCount() > 0)
         {
@@ -31,33 +33,75 @@ function createContact($address_id, $user_id, $address_group_id, $name, $email, 
     return false;    
 }  
 
-function getAllContacts()
+function validation($newData)
+{
+    $errors = array();
+    
+ if (!isValidName($newData[2]))
     {
-    $db = dbconnect();
-    $stmt = $db->prepare("SELECT * FROM address JOIN address_groups WHERE address.address_group_id = address_groups.address_group_id ");
-    $results = array();
-    if ($stmt->execute() && $stmt->rowCount() > 0) {
-        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
-    return $results;
+        $errors[] = 'Name is not valid, please try again.';
     }
     
-    function getProduct($id) 
+    if ( filter_var($newData[3], FILTER_VALIDATE_EMAIL) === false ) 
     {
-    $db = dbconnect();
-    $stmt = $db->prepare("SELECT * FROM address JOIN address_groups WHERE address.address_group_id = address_groups.address_group_id ");
-     $binds = array(
-        ":address_id" => $id );
-    
-    $results = array();
-    if ($stmt->execute($binds) && $stmt->rowCount() > 0) {
-        $results = $stmt->fetch(PDO::FETCH_ASSOC);
-    }     
-    return $results;    
+        $errors[] = 'Email address is not valid, please try again.';
     }
+    
+    if (!isValidPhone($newData[5]))
+    {
+        $errors[] = "Phone number is not valid, please try again.";
+    }
+    
+    if ( filter_var($newData[6], FILTER_VALIDATE_URL) == false  )
+    {
+        $errors[] = "Website is not valid, please try again.";
+    }
+    
+    return $errors;
+}
 
+//take spaces and non numeric characters out of phone number
+function stripPhone($value)
+{
+    $value = preg_replace("/[^0-9]/", "", $value);
+    $value = $value;
+    return $value;
+}
+//ensures enough digits in phone
+function isValidPhone($phone)
+{
+    $phone = stripPhone($phone);
+    if ($phone > 1000000000 && $phone <9999999999)
+    {
+        return true;
+    }
+    else
+    {
+    return false;
+    }
+}
+//formats phone so all are displayed the same way
+function formatPhone($phone)
+{
+    $phoneRegex = '/^\(?([2-9]{1}[0-9]{2})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/';
+    $newPhone = preg_replace( $phoneRegex, '($1) $2-$3' , $phone);
+    return $newPhone;
+}
+//ensures name has no numbers or special chars
+function isValidName($name)
+{
+    $nameRegex = '/^[A-Za-z\s]+$/';
+    if (preg_match($nameRegex, $name))
+    {
+        return true;
+    }
+    else 
+    {
+        return false;
+    }
+}
 
-function uploadNewAddressImage() {
+function uploadImage() {
     
     $imageName = "";
     
@@ -117,8 +161,8 @@ function uploadNewAddressImage() {
         /* File is uploaded successfully. */
         $imageName = $fileName . '.' . $ext;
         
-    } catch (RuntimeException $ext) {
-
+    } catch (RuntimeException $e) {
+        echo $e->getMessage();
         /* There was an error */
         
 
