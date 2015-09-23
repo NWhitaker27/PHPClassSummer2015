@@ -9,7 +9,7 @@
         <form method="post" action="#">
                 <select name="selected_address_group" class="form-control">
                 <?php                
-                    $selectedAddressGroupId = filter_input(INPUT_POST, 'selected_address_group');
+                    $selectedGroup = filter_input(INPUT_POST, 'selected_address_group');
                     foreach ($addressGroups as $row): ?>
                     <option value="<?php echo $row['address_group_id']; ?>"<?php if ($row['address_group_id'] == filter_input(INPUT_POST, 'selected_address_group')) echo "selected";?>>
                         <?php echo $row['address_group']; ?>
