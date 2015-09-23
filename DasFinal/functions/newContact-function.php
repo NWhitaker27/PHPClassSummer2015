@@ -14,7 +14,7 @@
 function createContact($newData)
     {
     $db = dbconnect();
-    $stmt = $db->prepare("INSERT INTO address SET user_id = :user_id, address_group_id = :address_group_id, fullname = :fullname, phone = :phone, website = :website, birthday = :birthday, image = :image ");
+    $stmt = $db->prepare("INSERT INTO address SET user_id = :user_id, address_group_id = :address_group_id, fullname = :fullname, email = :email, address = :address, phone = :phone, website = :website, birthday = :birthday, image = :image ");
     $binds = array(
         ":user_id" => $newData[0],
         ":address_group_id" => $newData[1],
@@ -152,7 +152,7 @@ function uploadImage() {
         // On this example, obtain safe unique name from its binary data.
 
         $fileName =  sha1_file($_FILES['upfile']['tmp_name']); 
-        $location = sprintf('../../images/%s.%s', $fileName, $ext); 
+        $location = sprintf('./images/%s.%s', $fileName, $ext); 
 
         if ( !move_uploaded_file( $_FILES['upfile']['tmp_name'], $location) ) {
             throw new RuntimeException('Failed to move uploaded file.'); 

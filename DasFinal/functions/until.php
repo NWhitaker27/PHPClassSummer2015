@@ -73,7 +73,7 @@ function getAllAddressesAndGroups() {
     return $results;
     
 }
-//gets contents of addresses db with connected address groups for one user, for one address group, sorted as directed
+//gets contents of addresses db with connected address groups for one user
 function groupSort($userid, $groupid, $sortBy) 
 {
     $db = dbconnect();
