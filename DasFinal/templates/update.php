@@ -57,9 +57,7 @@
             
         }
         include 'includes/updateform.php';
-        //var_dump($viewdate);
-        //var_dump($addressToUpdate[0]['address_group_id']);
-        //var_dump($newAddressData);
+        
         ?>
 
         <?php if ( isset($errors) && count($errors) > 0 ) : ?>
